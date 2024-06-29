@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ announcement.title }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>{{ announcement.title }}</h1>
+        {% if announcement.image %}
+            <img src="{{ announcement.image.url }}" alt="{{ announcement.title }}" class="img-fluid mb-3">
+        {% endif %}
+        <p>{{ announcement.content }}</p>
+        <p>Категория: {{ announcement.category.name }}</p>
+
+        
+
+        {% for response in announcement.responses.all %}
+            <div class="card mt-3">
+                <div class="card-body">
+                    <li>
+                        <p>{{ response.text }}</p>
+                        <p>Статус: {{ response.status }}</p>
+                      </li>
+                    <p>{{ response.content }}</p>
+                    <p><small>Автор: {{ response.user.username }}, Дата: {{ response.created_at }}</small></p>
+                </div>
+            </div><hr>
+            
+            <a href="{% url 'announcement_list' %}" class="btn btn-primary">Назад к списку</a><hr>
+        {% endfor %}
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+
+{% block title %}{% endblock %}
+
+{% block content %}
+<a href="{% url 'announcement-list' %}" class="home-button"><i class="fa fa-home"></i> Главная</a>
+    <h1>Создать объявление</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Создать</button>
+        
+    </form>
+{% endblock %}

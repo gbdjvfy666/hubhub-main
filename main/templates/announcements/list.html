@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блог</title>
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dropdown.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="libs/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Блог</h1>
+            {% if user.is_authenticated %}
+                <a href="{% url 'announcement-create' %}" class="btn btn-primary main-button"><span>Создать объявление</span></a>
+                <a href="{% url 'response-list' %}" class="btn btn-primary main-button">Мои отклики</a>
+                <a class="btn btn-primary main-button" href="{% url 'admin:index' %}">Админка</a>
+                <a class="btn btn-primary main-button" href="{% url 'logout' %}">Выйти из аккаунта</a>
+            {% else %}
+                <p>Пожалуйста, <a href="{% url 'register' %}">зарегистрируйтесь</a> или <a href="{% url 'login' %}">войдите</a>, чтобы создать объявление.</p>
+            {% endif %}
+        </div>
+    </header>
+    <div class="container">
+        <h1>Список объявлений</h1>
+        {% if announcements %}
+            <div class="list-group">
+                {% for announcement in announcements %}
+                    <div class="list-group-item">
+                        <a href="{% url 'announcement-detail' announcement.pk %}" class="list-group-item-action">
+                            <h5 class="mb-1">{{ announcement.title }}</h5>
+                            <p class="mb-1">{{ announcement.content|truncatewords:20 }}</p>
+                            <small>Категория: {{ announcement.category.name }}</small>
+                        </a>
+                        {% if user.is_authenticated %}
+                            <form method="post" action="{% url 'create-response' announcement.pk %}" class="d-inline">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <button type="submit" class="btn btn-primary comment-button">Коментарий</button>
+                            </form>
+                            <a href="{% url 'announcement_update' announcement.pk %}" class="btn btn-primary comment-button">Редактировать</a>
+                        {% else %}
+                            <p>Пожалуйста, <a href="{% url 'login' %}">войдите</a> чтобы оставить отклик.</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>Нет объявлений.</p>
+        {% endif %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z8Ld5+seprx0RmblFfCv/dUHyIhekFQhrphcJb" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-pzjw8f+7OK3qtn4q9BRJv5fF5JFiG7pMDL/W9suB/DjPhI+xrDk4t0t6XvhdnEzx" crossorigin="anonymous"></script>
+    
+</body>
+</html>

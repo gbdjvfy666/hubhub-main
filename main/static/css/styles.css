@@ -1,0 +1,147 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+.positioned {
+    position: relative;
+    top: 10px;
+    left: 750px;
+}
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.edit-button {
+    position:relative;
+    left:250px;
+    top:-80px;
+    background-color: #df0f88;
+    color: white;
+    margin: 5px;
+    display: block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 30px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-right: 690px;
+}
+
+.main-button:hover {
+    background-color: rgba(7, 87, 161, 0.702);
+}
+
+.home-button:hover, .main-button:hover {
+    background-color: rgba(7, 87, 161, 0.702)
+}
+
+.comment-button {
+    position: relative;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 30px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-right: 10px;
+}
+
+.main-button:hover {
+    background-color: rgba(7, 87, 161, 0.702);
+}
+
+.home-button:hover, .main-button:hover {
+    background-color: rgba(7, 87, 161, 0.702)
+}
+.home-button, .main-button {
+    position: relative;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 30px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-right: 10px;
+}
+
+.main-button:hover {
+    background-color: rgba(7, 87, 161, 0.702);
+}
+
+.home-button:hover, .main-button:hover {
+    background-color: rgba(7, 87, 161, 0.702)
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    padding: 20px;
+}
+
+.container h2 {
+    margin-top: 0;
+}
+
+.content {
+    display: flex;
+    align-items: flex-start;
+}
+
+.content img {
+    margin-right: 20px;
+    max-width: 300px;
+}
+
+.content p {
+    text-align: justify;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.list-group-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.list-group-item form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.list-group-item form .btn {
+    margin-right: 10px;
+}
