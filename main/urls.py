@@ -8,11 +8,13 @@ from .views import (
     response_list, delete_response, accept_response
 )
 from main import views
+from django.urls import include
 
 urlpatterns = [
     path('announcement/<int:announcement_id>/create-response/', ResponseCreateView.as_view(), name='create-response'),
     path('announcement/<int:pk>/', views.AnnouncementDetailView.as_view(), name='announcement-detail'),
     path('', AnnouncementListView.as_view(), name='announcement-list'),
+    path('chat/', include('chat.urls')),
     path('announcements/', views.AnnouncementListView.as_view(), name='announcement_list'),
     path('announcement/create/', AnnouncementCreateView.as_view(), name='announcement-create'),
     path('announcement/<int:pk>/update/', AnnouncementUpdateView.as_view(), name='announcement_update'),
